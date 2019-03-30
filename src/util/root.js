@@ -1,5 +1,6 @@
 import { signInForm, signUpForm }from '../templates/login.js';
 import { postSignUp, sector } from '../templates/registrer-post-signup.js';
+import { homeProfile } from '../templates/home.js';
 
 const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
@@ -10,7 +11,6 @@ const changeTmp = (hash) => {
       return viewTmp('#/different');
     }
   }
-
 
 const viewTmp = (routers) => {
   const router = routers.substr(2, routers.length - 2);
@@ -29,6 +29,9 @@ const viewTmp = (routers) => {
     break;
   case 'signup':
     container.appendChild(signUpForm());
+    break;
+    case 'home':
+    container.appendChild(homeProfile());
     break;
     
 }

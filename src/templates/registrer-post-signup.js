@@ -15,9 +15,11 @@ export const postSignUp = () => {
     
   sectionElement.querySelector('#mentora').addEventListener('click', () => {
     changeHash('/sector');
+    console.log('guardar el valor en la base de datos ');
   })
   sectionElement.querySelector('#mentee').addEventListener('click', () => {
     changeHash('/sector');
+    console.log('guardar el valor en la base de datos ');
   })
    
     return sectionElement;
@@ -27,11 +29,11 @@ export const postSignUp = () => {
   export const sector = () => {
     const formElem = document.createElement('section');
     formElem.setAttribute('id', 'sector');
-    const tempFormSignUp = `
+    formElem.innerHTML = `
       <div class="form-sign-up" id="signup">
         <h2>¿Que sector te interesa?
         <div id="sector-btns">
-            <button id="agricultura" value="agricultura">agricultura</button>
+            <button id="publico" value="público">público</button>
             <button id="mineria" value="mineria">mineria</button>
             <button id="construccion" value="construccion">construccion</button>
             <button id="ciencias" value="cienciasPoliticas">Ciencias politicas</button>
@@ -40,9 +42,8 @@ export const postSignUp = () => {
         </div>
       </div>`;
     
-    formElem.innerHTML = tempFormSignUp;
-    tempFormSignUp.querySelector('#sector').addEventListener('click', () => {
-        changeHash('/sector');
+      formElem.querySelector('#publico').addEventListener('click', () => {
+        console.log('guardar el valor en la base de datos ');
       })
     return formElem;
   };

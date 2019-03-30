@@ -1,18 +1,20 @@
   import { logOutOnSubmit } from '../controller-view/view-controller-auth.js'
   
+  
   // nav bar
-  export const navBar = () => {
+  export const navBar = (data) => {
     const sectionElement = document.createElement('div');
     sectionElement.setAttribute('id', 'container-profile');
     sectionElement.innerHTML = `
-    <a href="#/section-friends"><img src="img/btn-grupo.png" alt=""></a>
-    <a href="#/section-search"><img src="img/search.png" alt=""></a>
+    <a href="#/section-friends"><img src="../img/btn-grupo.png" alt=""></a>
+    <a href="#/section-search"><img src="../img/search.png" alt=""></a>
     <!-- DATOS GENERALES -->
     <div id="contenedor-datos">
 	  	<div>
-				<img src="" alt="imagen de usuario por default">
-        <p>puesto laboral: </p>
-        <h1>Nombre y apellido</h1>
+				<img src="../img/usuario.png" alt="imagen de usuario por default">
+        <p>puesto laboral:</p>
+        <h1>Nombre y apellido: ${data.name}</h1>
+        <h1>Correo:${data.email} </h1>
         <p>Ciudad,pais</p>
       </div>
         <!-- NIVEL DE PERFIL -->

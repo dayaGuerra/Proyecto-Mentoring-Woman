@@ -1,4 +1,4 @@
-import { signUp, logIn, logOut } from '../controller/controller-auth.js';
+import { signUp, logIn, logOut , getUserUid } from '../controller/controller-auth.js';
 import{ validation } from '../controller/validacion.js'
 
 // cambio de hash
@@ -13,13 +13,14 @@ export const logInOnSubmit = (event) => {
     const pass = document.querySelector('#password-social-media').value;
     const errorMessage = document.querySelector('#error-message-login');
 
-    if (validation(pass) === true) {
+    if (validation(pass)) {
       logIn(email, pass)
         .then(result => {  
           console.log('estas logueado');
-          changeHash('/registerPostSignUp')
+          localStorage.setItem("uid", getUserUid())
+          changeHash('/home')
         }).catch(error => {
-          console.log(error.code);
+          console.log(error);
           if (error.code === 'auth/wrong-password') {
             errorMessage.innerHTML = 'La contraseña no es correcta. Vuelve a intentarlo';
           } else if (error.code === 'auth/user-not-found') {
@@ -83,6 +84,7 @@ export const signUpOnSubmit = (event) => {
 export const logOutOnSubmit = () => {
     logOut()
       .then(() => {
+        localStorage.removeItem("uid");
         changeHash('/signin');
         console.log('ya no estas logueado');
       // respuesta a un usuario no logueado
@@ -108,12 +110,8 @@ firebase.auth().currentUser.uid;
 
 export const authStateObserver = (user) => {
 if (user && user.emailVerified) { 
- 
   changeHash('/registerPostSignUp');
-} else {
-  // alert('Verifica tu correo electronico para continuar');
-  changeHash('/signin');
-}
+  }
 };
 
 // Inicializar firebase
@@ -125,7 +123,7 @@ firebase.auth().onAuthStateChanged(authStateObserver);
 export const detectPromisesCreateUser = (funct) => {
   funct
     .then((result) => {
-      readDocBDFireStore('mentor', result.mentor.email)
+      readDocBDFireStore('mentor', result.mentor.uid)
         .then((respDoc) => {
           if (respDoc.data() === undefined) {
             console.log('No encontro documento');

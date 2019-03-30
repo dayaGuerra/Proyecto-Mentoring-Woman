@@ -5,8 +5,8 @@
     const sectionElement = document.createElement('div');
     sectionElement.setAttribute('id', 'container-profile');
     sectionElement.innerHTML = `
-
-    
+    <a href="#/section-friends"><img src="img/btn-grupo.png" alt=""></a>
+    <a href="#/section-search"><img src="img/search.png" alt=""></a>
     <!-- DATOS GENERALES -->
     <div id="contenedor-datos">
 	  	<div>

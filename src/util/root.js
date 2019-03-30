@@ -8,7 +8,7 @@ console.log(homeProfile);
 const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
       return viewTmp('#/home');
-    } else if (hash === '#/home' || hash === '#/signin' || hash === '#/signup' || hash === '#/registerPostSignUp' || hash === '#/sector') {
+    } else if (hash === '#/home' || hash === '#/signin' || hash === '#/signup' || hash === '#/registerPostSignUp' || hash === '#/sector' || hash === '#/home') {
       return viewTmp(hash);
     } else {
       return viewTmp('#/different');
@@ -30,7 +30,7 @@ const viewTmp = (routers) => {
     case 'signin':
     container.appendChild(signInForm())
     break;
-  case 'signup':
+    case 'signup':
     container.appendChild(signUpForm());
     break;
     case 'home':

@@ -5,11 +5,13 @@
     const sectionElement = document.createElement('div');
     sectionElement.setAttribute('id', 'container-profile');
     sectionElement.innerHTML = `
+
+    
     <!-- DATOS GENERALES -->
     <div id="contenedor-datos">
 	  	<div>
 				<img src="" alt="imagen de usuario por default">
-        <p>puesto laboral</p>
+        <p>puesto laboral: </p>
         <h1>Nombre y apellido</h1>
         <p>Ciudad,pais</p>
       </div>
@@ -52,7 +54,21 @@
     formElem.innerHTML = navBarTemplate;
     const logoutBtn = formElem.querySelector('#sign-out-btn');
      logoutBtn.addEventListener('click', logOutOnSubmit);
+
+
     return formElem;
   };
 
-  
+  export const profileSection = () => {
+    const formElem = document.createElement('section');
+    formElem.setAttribute('id', 'profile-settings');
+    const profileTemplate = `
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+       <h1 id="get-data"></h1>
+        </div>
+      </nav>
+    <div id="container-template"></div>`;
+    formElem.innerHTML = profileTemplate;
+    return formElem;
+  }

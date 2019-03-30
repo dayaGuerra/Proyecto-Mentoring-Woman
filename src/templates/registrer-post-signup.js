@@ -30,20 +30,22 @@ export const postSignUp = () => {
     const formElem = document.createElement('section');
     formElem.setAttribute('id', 'sector');
     formElem.innerHTML = `
-      <div class="form-sign-up" id="signup">
+      <div  id="signup">
         <h2>¿Que sector te interesa?
         <div id="sector-btns">
-            <button id="publico" value="público">público</button>
-            <button id="mineria" value="mineria">mineria</button>
-            <button id="construccion" value="construccion">construccion</button>
-            <button id="ciencias" value="cienciasPoliticas">Ciencias politicas</button>
-            <button id="negocios" value="negocios">Negocios</button>
-            <button id="tecnologia" value="tecnologia">Tecnologia</button>
+        <input type="checkbox" id="type-sector1"><label for="type-sector1">público</label>
+        <input type="checkbox" id="type-sector2"><label for="type-sector2">mineria</label>
+        <input type="checkbox" id="type-sector3"><label for="type-sector3">construccion</label>
+        <input type="checkbox" id="type-sector4"><label for="type-sector4">Ciencias politicas</label>
+        <input type="checkbox" id="type-sector5"><label for="type-sector5">Negocios</label>
+        <input type="checkbox" id="type-sector6"><label for="type-sector6">Tecnologia</label>
+        <button id="btn-next">Siguiente</button>
         </div>
       </div>`;
     
-      formElem.querySelector('#publico').addEventListener('click', () => {
+      formElem.querySelector('#btn-next').addEventListener('click', () => {
         console.log('guardar el valor en la base de datos ');
+        changeHash('/home');
       })
     return formElem;
   };

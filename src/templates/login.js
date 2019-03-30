@@ -41,10 +41,19 @@ export const signUpForm = () => {
         </p>
       </div>
       <div class="register-inputs-field col-form-create-account">
-        <input type="text" class="login-social-media" id="name-social-media" placeholder="Nombre">
-        <input type="text" class="login-social-media" id="lastname-social-media" placeholder="Apellido">
+        <input type="text" class="login-social-media" id="name-social-media" placeholder="Nombre y apellidos">
         <input type="email" class="login-social-media" id="create-email" placeholder="Correo electronico">
         <input type="password" class="login-social-media" id="create-password" placeholder="Contraseña">
+        <select id='sector-selector' class='select-sector' name='sector'>
+                    <option value=''>Sector que perteneces</option>
+                    <option value='Publico'>Publico</option>
+                    <option value='Mineria'>Mineria</option>
+                    <option value='Construccion'>Construccion</option>
+                    <option value='Politica'>Politica</option>
+                    <option value='Negocios'>Negocios</option>
+                    <option value='Tecnologia'>Tecnologia</option>
+                    <option value='Tecnologia'>Servicios</option>
+                  </select>
       </div>
       <p id="error-message-signup"></p>
       <button class="login-social-media btn-login" id="btn-register">Registrate</button> 

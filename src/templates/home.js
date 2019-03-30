@@ -1,14 +1,10 @@
+  import { logOutOnSubmit } from '../controller-view/view-controller-auth.js'
   
-  export const homeProfile = () => {
-    const formElem = document.createElement('section');
-    formElem.setAttribute('id', 'profile');
-    formElem.innerHTML = `
-    <!-- BUTTONS -->
-    <div class="profile-userbuttons">
-      <button type="button" class="btn-profile">Solicitudes</button>
-      <button type="button" class="btn-profile">Buscar</button>
-    </div>
-
+  // nav bar
+  export const navBar = () => {
+    const sectionElement = document.createElement('div');
+    sectionElement.setAttribute('id', 'container-profile');
+    sectionElement.innerHTML = `
     <!-- DATOS GENERALES -->
     <div id="contenedor-datos">
 	  	<div>
@@ -27,8 +23,36 @@
         <p>¿Quiero ser?</p>
         <textarea placeholder= "Escribe lo que quieras que sepan de ti aqui"></textarea>
       </div>
-    </div>`;
-    
+   </div>
+    `;
+    return sectionElement;
+  };
+ 
+  
+  export const homeProfile = () => {
+    const formElem = document.createElement('section');
+    formElem.setAttribute('id', 'profile');
+    const navBarTemplate = `
+    <!-- naVbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#/home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="#/ajustes">Ajustes de Perfil</a>
+        <a class="nav-item nav-link" id="sign-out-btn">Cerrar Sesión</a>
+        <a class="nav-item nav-link disabled" href="#">Disabled</a>
+      </div>
+        </div>
+      </nav>
+    <div id="container-template"></div>`;
+    formElem.innerHTML = navBarTemplate;
+    const logoutBtn = formElem.querySelector('#sign-out-btn');
+     logoutBtn.addEventListener('click', logOutOnSubmit);
     return formElem;
   };
 
+  

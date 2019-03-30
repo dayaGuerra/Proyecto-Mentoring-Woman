@@ -1,8 +1,6 @@
 import { signInForm, signUpForm }from '../templates/login.js';
 import { postSignUp, sector } from '../templates/registrer-post-signup.js';
 import { homeProfile, navBar } from '../templates/home.js';
-console.log(navBar);
-console.log(homeProfile);
 // ambas tienen la mista estructura.
 
 const changeTmp = (hash) => {

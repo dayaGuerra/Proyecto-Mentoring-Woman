@@ -68,7 +68,8 @@ export const signUpOnSubmit = (event) => {
 export const logOutOnSubmit = () => {
     logOut()
       .then(() => {
-        changeHash('/signin'); 
+        changeHash('/signin');
+        console.log('ya no estas logueado');
       // respuesta a un usuario no logueado
       }).catch(error => console.log(error.code));
   };

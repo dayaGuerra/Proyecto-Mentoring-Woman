@@ -100,6 +100,10 @@ if (user && user.emailVerified) {
 }
 };
 
+    export const stateUser = () => {
+      firebase.auth().currentUser;
+    }
+
 // Inicializar firebase
 export const initFirebaseAuth = () => {
 // Escucha los estados de cambio

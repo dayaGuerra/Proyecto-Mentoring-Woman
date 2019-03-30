@@ -1,8 +1,16 @@
 import { signInForm, signUpForm }from '../templates/login.js';
 import { postSignUp, sector } from '../templates/registrer-post-signup.js';
-
+import { homeProfile, navBar } from '../templates/home.js';
+import { stateUser } from '../controller-view/view-controller-auth.js' 
+// ambas tienen la mista estructura.
 const changeTmp = (hash) => {
-    if (hash === '#/' || hash === '' || hash === '#') {
+  if( stateUser() === null){
+    if((hash === '#/signin' || hash === '#/signup')){
+      return viewTmp(hash);
+    }
+  }
+  
+  if (hash === '#/' || hash === '' || hash === '#') {
       return viewTmp('#/home');
     } else if (hash === '#/home' || hash === '#/signin' || hash === '#/signup' || hash === '#/registerPostSignUp' || hash === '#/sector') {
       return viewTmp(hash);
@@ -11,12 +19,11 @@ const changeTmp = (hash) => {
     }
   }
 
-
 const viewTmp = (routers) => {
   const router = routers.substr(2, routers.length - 2);
   const container = document.getElementById('container');
   container.innerHTML = '';
-
+  
   switch (router) {
     case 'registerPostSignUp':
     container.appendChild(postSignUp())
@@ -29,6 +36,12 @@ const viewTmp = (routers) => {
     break;
   case 'signup':
     container.appendChild(signUpForm());
+    break;
+    case 'home':
+    container.appendChild(homeProfile());
+    const containerTemplate = document.getElementById('container-template');
+    containerTemplate.innerHTML = '';
+    containerTemplate.appendChild(navBar());
     break;
     
 }

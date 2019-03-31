@@ -1,4 +1,41 @@
-import { logInOnSubmit, signUpOnSubmit } from '../controller-view/view-controller-auth.js'
+import { logInOnSubmit, signUpOnSubmit, changeHash } from '../controller-view/view-controller-auth.js'
+
+// export const startForm = () => {
+//   const formElem = document.createElement('div');
+//   formElem.setAttribute('id', 'start');
+//   const tempformLogin = `<div>
+//   <h1>Se parte de la red de crecimeinto profesional.</h1>
+//   <img src="../img/Group.png" alt="imagen de logo">
+//   <button class="next" id="btn-next">Siguiente</button>
+//   </div>`;
+//   formElem.innerHTML = tempformLogin;
+//   const logInBtn = formElem.querySelector('#btn-next');
+//   logInBtn.addEventListener('click', () => {
+//     changeHash('/startNext');
+//   });
+//   return formElem;
+// }
+
+export const startNext = () => {
+  const formElem = document.createElement('form');
+  formElem.setAttribute('id', 'startNext');
+  const tempformLogin = `<div>
+  <h1>Se parte de la red de crecimeinto profesional.</h1>
+  <button class="next" id="btn-login2">Ingresar</button>
+  <button class="next" id="btn-register">Registrate</button>
+  </div>`;
+  formElem.innerHTML = tempformLogin;
+  const logInBtn2 = formElem.querySelector('#btn-login2');
+  logInBtn2.addEventListener('click', () => {
+    changeHash('/signin');
+  });
+
+  const registerBtn = formElem.querySelector('#btn-register');
+  registerBtn.addEventListener('click', () => {
+    changeHash('/registerPostSignUp');
+  });
+  return formElem;
+}
 
 export const signInForm = () => {
   const formElem = document.createElement('form');
@@ -12,7 +49,6 @@ export const signInForm = () => {
       <div class="col-form-login-account">
         <p class="text-login text-first-sesion">Iniciar Sesión</p>
       </div>
-    
       <div class="register-inputs-field col-form-create-account">
       <input type="email" class="login-social-media" id="email-social-media" placeholder="Correo electronico" required>
       <input type="password" class="login-social-media" id="password-social-media" placeholder="Contraseña" required>

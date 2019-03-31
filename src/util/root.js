@@ -1,8 +1,7 @@
-import { signInForm, signUpForm }from '../templates/login.js';
+import { signInForm, signUpForm, startNext, startForm}from '../templates/login.js';
 import { postSignUp, sector } from '../templates/registrer-post-signup.js';
 import { homeProfile, navBar } from '../templates/home.js';
 import { isUserSignedIn, readDocBDFireStore } from '../controller/controller-auth.js'
-import { changeHash } from '../controller-view/view-controller-auth.js';
 
 // ambas tienen la mista estructura.
 
@@ -11,11 +10,11 @@ const changeTmp = (hash) => {
     if (hash === '#/' || hash === '' || hash === '#') {
       return viewTmp('#/home');
     }
-    if (hash === '#/home' || hash === '#/signin' || hash === '#/signup' || hash === '#/registerPostSignUp' || hash === '#/sector' || hash === '#/home') {
+    if (hash === '#/home' || hash === '#/signin' || hash === '#/signup' || hash === '#/registerPostSignUp' || hash === '#/sector' || hash === '#/home' || hash === '#/startForm' || hash === '#/startNext') {
       return viewTmp(hash);
     }
   } else {
-      return viewTmp('#/signin');
+      return viewTmp('#/startNext');
     }
   }
 
@@ -26,6 +25,12 @@ const viewTmp = (routers) => {
   console.log(routers, router);
   
   switch (router) {
+    // case 'startForm':
+    // container.appendChild(startForm())
+    // break;
+    case 'startn':
+    container.appendChild(startNext())
+    break;
     case 'registerPostSignUp':
     container.appendChild(postSignUp())
     break;
@@ -33,7 +38,6 @@ const viewTmp = (routers) => {
     container.appendChild(sector());
     break;
     case 'signin':
-    console.log("hola");
     container.appendChild(signInForm())
     break;
     case 'signup':
